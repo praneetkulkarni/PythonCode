@@ -1,0 +1,16 @@
+#!/bin/bash
+
+filename="/cba_app/ods_runauto/bin/Unix_modified_files.txt"
+fileperm = ''
+# Check if the file exists
+if [ -e "$filename" ]; then
+    # Read the file line by line
+    while IFS= read -r line; do
+    #fileperm =$( echo "$line"|awk -F'/' '{print $NF}')
+    fileperm =  $(basename "$line")
+   echo "File Name : $fileperm"
+    done < "$filename"
+else
+    echo "File not found: $filename"
+    exit 1
+fi
